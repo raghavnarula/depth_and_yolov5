@@ -15,3 +15,6 @@ TO Clear the results just
 bash clear.sh
 ``` 
 and the final_results directory would be set to normal.
+
+### Important
+**To change the test image Go to the  run.sh and change the path of the image ..**
