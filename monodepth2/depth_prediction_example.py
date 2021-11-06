@@ -12,11 +12,13 @@ import networks
 from utils import download_model_if_doesnt_exist
 
 from pathlib import Path
-
+import glob
+import re
 # Path Detector ...
 def increment_path(path, exist_ok=False, sep='', mkdir=False):
     # Increment file or directory path, i.e. runs/exp --> runs/exp{sep}2, runs/exp{sep}3, ... etc.
     path = Path(path)  # os-agnostic
+    print(path,"I am printing the path")
     if path.exists() and not exist_ok:
         path, suffix = (path.with_suffix(''), path.suffix) if path.is_file() else (path, '')
         dirs = glob.glob(f"{path}{sep}*")  # similar paths
@@ -84,7 +86,9 @@ disp_resized = torch.nn.functional.interpolate(disp,(original_height, original_w
 # Saving colormapped depth image
 disp_resized_np = disp_resized.squeeze().cpu().numpy()
 vmax = np.percentile(disp_resized_np, 95)
-plt.imsave(arr=disp_resized_np, cmap='magma', vmax=vmax,fname="final_results/depthImages/car.png")
 
-# save_dir = increment_path(Path(project) / "exp", exist_ok=exist_ok)  # increment run
-print("Image saved in final_results/depthImagegs as car.png")
+# save_dir = increment_path(Path("../final_results/") / "exp", exist_ok=False)  # increment run
+# (save_dir / 'labels').mkdir(parents=True, exist_ok=True)
+save_path = "final_results/exp/depth.png"
+plt.imsave(arr=disp_resized_np, cmap='magma', vmax=vmax,fname=save_path)
+print("Image saved in final_results/exp as depth.png")

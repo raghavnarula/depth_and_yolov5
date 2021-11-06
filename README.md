@@ -7,11 +7,10 @@ To Run the Code Just Run the Bash script
 bash run.sh
 ```
 
-In Final Results We can See the the depth Images in the Depth Image Folder and a new folder exp would be created.
+In final_results directory we will see a directory of exp which contains both the depth image and the corresponding yolov5 image.
 
-TO Clear the results just 
-
+To Clear the results just 
 ```
 bash clear.sh
 ``` 
-and the final_results directory would be set to normal.
+and the final_results directory would be set to default.
