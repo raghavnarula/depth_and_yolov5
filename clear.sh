@@ -1,2 +1,3 @@
-rm -rf final_results/depth 
-rm -rf final_results/exp
+rm -rf final_results
+
+mkdir final_results
