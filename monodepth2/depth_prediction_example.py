@@ -158,7 +158,7 @@ if not os.path.isdir(str(args.SavePath)+f"/final_results/depth_{Path(image_paths
     os.mkdir(str(args.SavePath)+f"/final_results/depth_{Path(image_paths).stem}")
     print(f"Created Folder For storing Images in ../final_results ::: depth_{Path(image_paths).stem}")
 
-'''
+
 try:
     osList = os.listdir(image_paths)
     count = 0
@@ -222,4 +222,3 @@ except NotADirectoryError:
     save_path = str(args.SavePath) + f"/final_results/depth/depth_{Path(image_paths).stem}.jpg"
     plt.imsave(arr=disp_resized_np, cmap='magma', vmax=vmax,fname=save_path)
     print(f"Stored as {Path(save_path)}")
-'''
