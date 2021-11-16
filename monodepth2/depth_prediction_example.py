@@ -152,12 +152,13 @@ depth_decoder.eval();
 
 # Loading the test image and preprocessing
 
-if not os.path.isdir(str(args.SavePath)+"/final_results/depth/"):
-    os.mkdir(str(args.SavePath)+"/final_results/depth")
-    print("Created Folder For storing Images in ../final_results ::: depth")
-
 image_paths = args.ImagePath
+print(Path(image_paths).stem)
+if not os.path.isdir(str(args.SavePath)+f"/final_results/depth_{Path(image_paths).stem}/"):
+    os.mkdir(str(args.SavePath)+f"/final_results/depth_{Path(image_paths).stem}")
+    print(f"Created Folder For storing Images in ../final_results ::: depth_{Path(image_paths).stem}")
 
+'''
 try:
     osList = os.listdir(image_paths)
     count = 0
@@ -185,9 +186,7 @@ try:
         # Saving colormapped depth image
         disp_resized_np = disp_resized.squeeze().cpu().numpy()
         vmax = np.percentile(disp_resized_np, 95)
-
-
-        save_path = str(args.SavePath) + f"/final_results/depth/depth_{osList[count]}"
+        save_path = str(args.SavePath) + f"/final_results/depth_{Path(image_paths).stem}/depth_{osList[count]}"
         plt.imsave(arr=disp_resized_np, cmap='magma', vmax=vmax,fname=save_path)
         count += 1
         print("Image Saved in final_results",count)
@@ -223,3 +222,4 @@ except NotADirectoryError:
     save_path = str(args.SavePath) + f"/final_results/depth/depth_{Path(image_paths).stem}.jpg"
     plt.imsave(arr=disp_resized_np, cmap='magma', vmax=vmax,fname=save_path)
     print(f"Stored as {Path(save_path)}")
+'''
