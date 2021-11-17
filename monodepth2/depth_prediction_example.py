@@ -186,11 +186,10 @@ try:
         # Saving colormapped depth image
         disp_resized_np = disp_resized.squeeze().cpu().numpy()
         vmax = np.percentile(disp_resized_np, 95)
-        save_path = str(args.SavePath) + f"/final_results/depth_{Path(image_paths).stem}/depth_{osList[count]}"
-        plt.imsave(arr=disp_resized_np, cmap='magma', vmax=vmax,fname=save_path)
+        save_path = str(args.SavePath) + f"/final_results/depth_{Path(image_paths).stem}/{osList[count][4:10]}_depth.png"
+        plt.imsave(arr=disp_resized_np, cmap='gray', vmax=vmax,fname=save_path)
         count += 1
         print("Image Saved in final_results",count)
-
 
 except NotADirectoryError:
     # This is a file and not a folder of images
@@ -219,6 +218,6 @@ except NotADirectoryError:
     vmax = np.percentile(disp_resized_np, 95)
 
     # split the string name and get the last one 
-    save_path = str(args.SavePath) + f"/final_results/depth/depth_{Path(image_paths).stem}.jpg"
+    save_path = str(args.SavePath) + f"/final_results/depth/{Path(image_paths).stem}_depth.jpg"
     plt.imsave(arr=disp_resized_np, cmap='magma', vmax=vmax,fname=save_path)
     print(f"Stored as {Path(save_path)}")

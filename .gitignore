@@ -1,4 +1,7 @@
 env
 models
 monodepth2/models
-
+final_results
+DeepVO-pytorch/KITTI/
+DeepVO-pytorch/models/
+DeepVO-pytorch/.git/
